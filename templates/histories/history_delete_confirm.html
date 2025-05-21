@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>履歴削除確認</h2>
+<p>本当にこの履歴を削除しますか？</p>
+
+<form method="post">
+    {% csrf_token %}
+    <p>
+        <button type="submit">削除する</button>
+        <a href="{% url 'history_detail' item.id %}">キャンセル</a>
+    </p>
+</form>
+{% endblock content %}

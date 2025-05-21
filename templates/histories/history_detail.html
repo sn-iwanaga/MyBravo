@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>履歴詳細</h2>
+
+<p>Data: {{ item.created_at|date:"Y/m/d H:i" }}</p>
+{% if history_type == 'action' %}
+    <p>Type: Action</p>
+    <p>Name: {{ item.action.name }}</p>
+    <p>Point: +{{ item.point_change }} Pt</p>
+{% else %}
+    <p>Type: Reward</p>
+    <p>Name: {{ item.reward.name }}</p>
+    <p>Point: {{ item.point_change }} Pt</p>
+{% endif %}
+
+<p class="link_p">
+    <a href="{% url 'history_list' %}">戻る</a> / 
+    <a href="{% url 'history_update' item.id %}">編集</a> / 
+    <a id='delete_a' href="{% url 'history_delete_confirm' item.id %}">削除</a>
+</p>
+{% endblock content %}  
