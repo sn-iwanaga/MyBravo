@@ -64,4 +64,54 @@
 
     <hr>
 
+    <h3>Accumulated Points: {{ total_points }} Pt</h3>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = {{ labels_json|safe }};
+        const dataPoints = {{ data_json|safe }};
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Accumulated Points',
+                    data: dataPoints,
+                    borderColor: 'rgba(75, 192, 192, 1)',  // 透明度を0.5に設定
+                    borderWidth: 1,
+                    fill: false,
+                    tension: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'date'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Accumulated Points'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {  
+                        display: false 
+                    },
+                    title: {  
+                        display: false 
+                    }
+                }
+            }
+        });
+    </script>
 {% endblock content %}
