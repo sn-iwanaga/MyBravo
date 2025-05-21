@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse
 
 from .models import Action
 from .forms import ActionForm
-
+from histories.models import ActionHistory
 
 @login_required
 def action_create_view(request):
@@ -35,6 +36,37 @@ def action_detail_view(request, action_id):
         'action': action,
     }
     return render(request, 'actions/action_detail.html', context)
+
+@login_required
+def action_record_view(request, action_id):
+    action = get_object_or_404(
+        Action,
+        pk=action_id,
+        user=request.user,
+        is_deleted=False
+    )
+    request.user.point += action.point
+    request.user.save()
+
+    ActionHistory.objects.create(
+        user=request.user,
+        action=action,
+        point_change=action.point
+    )
+
+    messages.success(request, f'{action.name}を記録しました！')
+    
+    # リファラーからリダイレクト先を決定
+    if 'HTTP_REFERER' in request.META:
+        referer_url = request.META['HTTP_REFERER']
+        action_detail_url = reverse('action_detail', args=[action_id])
+        if action_detail_url in referer_url:
+            return redirect('action_detail', action_id=action_id)
+        else:
+            return redirect('mypage')
+    else:
+        return redirect('mypage')
+
 
 @login_required
 def action_update_view(request, action_id):

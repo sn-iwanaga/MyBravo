@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>履歴一覧</h2>
+
+<table class='history_table'>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Point</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in page_obj.object_list %}
+      <tr onclick="window.location='{{ item.detail_url }}'" style="cursor: pointer;">
+        <td>{{ item.created_at|date:"Y/m/d H:i" }}</td>
+        {% if item.type == 'action' %}
+          <td>Action</td>
+          <td>{{ item.item_name }}</td>
+          <td>+{{ item.point_change }} Pt</td>
+        {% else %}
+          <td>Reward</td>
+          <td>{{ item.item_name }}</td>
+          <td>{{ item.point_change }} Pt</td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- ページネーション -->
+<div style="margin-top: 1rem;">
+  {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
+  {% endif %}
+  <span style="margin: 0 10px;">
+    Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+  </span>
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+  {% endif %}
+</div>
+{% endblock content %}

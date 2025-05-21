@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>ご褒美交換確認</h2>
+<p>ご褒美名: {{ reward.name }}</p>
+<p>必要ポイント: {{ reward.point }} Pt</p>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% else %}
+    <p>交換しますか？</p>
+    <p><a href="{% url 'reward_exchange' reward.id %}">はい、交換する</a></p>
+{% endif %}
+
+<p><a href="{% url 'mypage' %}">マイページに戻る</a></p>
+{% endblock %}

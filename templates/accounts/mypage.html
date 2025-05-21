@@ -21,6 +21,7 @@
                     <td>{{ action.name }}</td>
                     <td>{{ action.point }} Pt</td>
                     <td>
+                        <a href="{% url 'action_record' action.id %}">Record</a>
                     </td>
                 </tr>
             {% empty %}
@@ -50,6 +51,7 @@
                     <td>{{ reward.name }}</td>
                     <td>{{ reward.point }} Pt</td>
                     <td>
+                        <a href="{% url 'reward_confirm' reward.id %}">Exchange</a>
                     </td>
                 </tr>
             {% empty %}

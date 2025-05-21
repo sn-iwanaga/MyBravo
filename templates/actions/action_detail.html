@@ -7,6 +7,7 @@
 <p>獲得ポイント: {{ action.point }} Pt</p>
 
 <p class='link_p'>
+    <a href="{% url 'action_record' action.id %}">記録</a> /
     <a href="{% url 'action_update' action.id %}">編集</a> / 
     <a id='delete_a' href="{% url 'action_delete' action.id %}">削除</a>
 </p>

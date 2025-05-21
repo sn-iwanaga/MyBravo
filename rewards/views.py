@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Reward
 from .forms import RewardForm
 from django.contrib import messages
+from histories.models import RewardHistory
+
 
 @login_required
 def reward_create_view(request):
@@ -25,6 +27,32 @@ def reward_detail_view(request, reward_id):
         'reward': reward,
     }
     return render(request, 'rewards/reward_detail.html', context)
+
+@login_required
+def reward_exchange_view(request, reward_id):
+    reward = get_object_or_404(Reward, pk=reward_id, user=request.user, is_deleted=False)
+    if request.user.point < reward.point:
+        return render(request, 'rewards/reward_confirm.html', {
+            'reward': reward,
+            'error': 'ポイントが不足しています。'
+        })
+    request.user.point -= reward.point
+    request.user.save()
+
+    RewardHistory.objects.create(
+        user=request.user,
+        reward=reward,
+        point_change=-reward.point
+    )
+    messages.success(request, f'{reward.name}と交換しました！')
+    
+    return redirect('mypage')
+
+@login_required
+def reward_confirm_view(request, reward_id):
+    reward = get_object_or_404(Reward, pk=reward_id, user=request.user, is_deleted=False)
+    return render(request, 'rewards/reward_confirm.html', {'reward': reward})
+
 
 @login_required
 def reward_update_view(request, reward_id):

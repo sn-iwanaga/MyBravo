@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'accounts',
     'actions',
     'rewards',
-    
+    'histories'
 ]
 
 # カスタムユーザモデル
