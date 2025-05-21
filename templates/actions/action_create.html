@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>アクション新規登録</h2>
+    <form method="POST" class="auth-form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error-message">
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="auth-button">登録</button>
+        <div class='space'></div>
+        <a href="{% url 'mypage' %}" class="auth-button cancel">キャンセル</a>
+    </form>
+</div>
+{% endblock %}

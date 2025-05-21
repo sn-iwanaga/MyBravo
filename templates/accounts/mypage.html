@@ -2,6 +2,32 @@
 {% load static %}
 
 {% block content %}
-    <h1>mypage</h1>
     <h2>{{ user.point }} Pt</h2>
+    <hr>
+
+    <h3>Actions</h3>
+    <p class='link_p'><a href="{% url 'action_create' %}">Create Action</a></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Points</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for action in actions %}
+                <tr onclick="window.location='{% url 'action_detail' action.id %}'" style="cursor: pointer;">
+                    <td>{{ action.name }}</td>
+                    <td>{{ action.point }} Pt</td>
+                    <td>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">---</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}

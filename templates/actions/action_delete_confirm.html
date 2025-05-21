@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>アクション削除確認</h2>
+<p>本当に「{{ action.name }}」を削除しますか？</p>
+
+<form method="post">
+    {% csrf_token %}
+    <p>
+        <button type="submit">削除する</button>
+        <a href="{% url 'action_detail' action.id %}">キャンセル</a>
+    </p>
+</form>
+{% endblock %}
