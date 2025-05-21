@@ -90,7 +90,7 @@ def history_delete_confirm_view(request, history_id):
         # differenceを計算: この履歴のpoint_change を打ち消す
         difference = -item.point_change
         if user.point + difference < 0:
-            messages.error(request, 'ポイントが不足しているため、削除できません。')
+            messages.error(request, '累積資料ポイントが累積取得ポイントを超過するため、削除できません。')
             return redirect('history_list')
 
         user.point += difference
@@ -137,7 +137,7 @@ def history_update_view(request, history_id):
             # 差分計算
             difference = updated_item.point_change - old_point_change
             if user.point + difference < 0:
-                messages.error(request, 'ポイントが不足しているため、履歴を更新できません。')
+                messages.error(request, '累積資料ポイントが累積取得ポイントを超過するため、履歴を更新できません。')
                 return render(request, 'histories/history_update.html', {
                     'form': form,
                     'item': item,

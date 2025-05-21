@@ -1,0 +1,327 @@
+/* ============================================== */
+/* 基本設定 */
+/* ============================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.space {
+    margin: 5px auto;
+}
+
+/* デフォルトのul/liスタイルをリセット */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================== */
+/* ヘッダー周り */
+/* ============================================== */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    position: sticky;
+    z-index: 999;
+    top: 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+header nav ul {
+    display: flex; 
+    gap: 20px;   
+    list-style: none;
+    padding: 0;  
+    margin: 0;  
+}
+
+header nav li {
+    display: block;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+header nav a:hover {
+    color: #0056b3;
+}
+
+/* ============================================== */
+/* メインコンテンツ */
+/* ============================================== */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+hr {
+    margin: 20px 0;
+}
+
+/* タイトルの見栄えを少し調整 */
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+h3 {
+    text-align: center;
+    margin-top: 4%;
+}
+
+p {
+    text-align: center;
+}
+
+.link_p {
+    text-align: right;
+    padding-right: 3%;
+}
+
+
+/* ============================================== */
+/* リスト表示 */
+/* ============================================== */
+li {
+    margin-bottom: 8px;
+}
+
+/* おしゃれなリスト用クラス例 */
+.styled-list li {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.styled-list li::before {
+    content: "•";
+    color: #007bff;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    font-size: 1.2rem;
+}
+.styled-list li:hover {
+    background-color: #f0f8ff;
+}
+
+/* ============================================== */
+/* ボタンやリンク */
+/* ============================================== */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    color: #0056b3;
+}
+.cancel:hover {
+    color: #fff;
+}
+
+#delete_a {
+    color: #ff0d00;
+    text-decoration: none;
+}
+#delete_a:hover {
+    color: #b30000;
+}
+
+button,
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:hover,
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* ============================================== */
+/* テーブルのスタイル */
+/* ============================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+th {
+    background-color: #f0f0f0;
+}
+th:last-child {
+    text-align: center;
+}
+
+td:first-child {
+    width: 45%;
+}
+td:last-child {
+    width: 20%;
+    text-align: center;
+}
+
+.history_table td:first-child {
+    width: 32.5%;
+}
+.history_table td:nth-child(2) {
+    width: 27.5%;
+}
+.history_table td:last-child {
+    width: 20%;
+}
+
+
+/* テーブルの行ホバー */
+tbody tr:hover {
+    background-color: #f0f8ff;
+    cursor: pointer;
+}
+
+/* 認証コンテナ */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 認証フォーム */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* フォームグループ */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: #dc3545;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* 認証ボタン */
+.auth-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+    background-color: #0056b3;
+}
+
+/* 認証リンク */
+.auth-link {
+    margin-top: 20px;
+    color: #555;
+}
+
+.auth-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    .auth-container {
+        max-width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 14px;
+    }
+
+    .auth-button {
+        font-size: 16px;
+    }
+}
