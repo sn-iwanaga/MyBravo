@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="auth-container">
-    <h2>アクション新規登録</h2>
+    <h2>ご褒美編集</h2>
     <form method="POST" class="auth-form">
         {% csrf_token %}
         {% for field in form %}
@@ -19,9 +19,9 @@
                 {% endif %}
             </div>
         {% endfor %}
-        <button type="submit" class="auth-button">登録</button>
+        <button type="submit" class="auth-button">更新</button>
         <div class='space'></div>
-        <a href="{% url 'mypage' %}" class="auth-button cancel">キャンセル</a>
+        <a href="{% url 'reward_detail' reward_id=reward.id %}" class="auth-button cancel">キャンセル</a>
     </form>
 </div>
 {% endblock %}

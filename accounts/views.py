@@ -36,8 +36,11 @@ def logout_view(request):
 def mypage_view(request):
     user = request.user
     actions = user.action_set.filter(is_deleted=False)
+    rewards = user.reward_set.filter(is_deleted=False)
     context = {
         'user': user,
         'actions': actions,
+        'rewards': rewards,
+        
     }
     return render(request, 'accounts/mypage.html', context)
