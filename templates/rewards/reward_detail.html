@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>ご褒美詳細</h2>
+<p>ご褒美名: {{ reward.name }}</p>
+<p>必要ポイント: {{ reward.point }} Pt</p>
+
+<p class='link_p'>
+    <a href="{% url 'reward_update' reward.id %}">編集</a> / 
+    <a id='delete_a' href="{% url 'reward_delete' reward.id %}">削除</a>
+</p>
+
+
+<p><a href="{% url 'mypage' %}">マイページに戻る</a></p>
+{% endblock %}
