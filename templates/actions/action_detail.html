@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>アクション詳細</h2>
+<p>アクション名: {{ action.name }}</p>
+<p>獲得ポイント: {{ action.point }} Pt</p>
+
+<p class='link_p'>
+    <a href="{% url 'action_update' action.id %}">編集</a> / 
+    <a id='delete_a' href="{% url 'action_delete' action.id %}">削除</a>
+</p>
+
+<hr>
+
+<p><a href="{% url 'mypage' %}">マイページに戻る</a></p>
+{% endblock %}

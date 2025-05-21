@@ -5,10 +5,11 @@ import dotenv
 # BASE_DIR
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-dotenv.load_dotenv(os.path.join(BASE_DIR, '..', '.env'))
+dotenv_path = os.path.join(BASE_DIR, '.env')
+dotenv.load_dotenv(dotenv_path)
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '*** REPLACE ME ***')
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -20,7 +21,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-        'accounts',
+    'accounts',
+    'actions',
+    
 ]
 
 # カスタムユーザモデル
@@ -59,11 +62,11 @@ WSGI_APPLICATION = 'mybravo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('POSTGRES_DB', 'mybravo_ai'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres1995'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'NAME': 'mybravo_db',
+        'USER': 'postgres',
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

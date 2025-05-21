@@ -35,8 +35,9 @@ def logout_view(request):
 @login_required
 def mypage_view(request):
     user = request.user
-    
+    actions = user.action_set.filter(is_deleted=False)
     context = {
         'user': user,
+        'actions': actions,
     }
     return render(request, 'accounts/mypage.html', context)
