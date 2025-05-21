@@ -10,7 +10,7 @@ dotenv.load_dotenv(os.path.join(BASE_DIR, '..', '.env'))
 SECRET_KEY = os.environ.get('SECRET_KEY', '*** REPLACE ME ***')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,8 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+        'accounts',
 ]
 
+# カスタムユーザモデル
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
