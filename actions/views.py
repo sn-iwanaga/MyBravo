@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse
+import json
+from datetime import date, timedelta
 
 from .models import Action
 from .forms import ActionForm
@@ -32,8 +34,29 @@ def action_detail_view(request, action_id):
         is_deleted=False
     )
 
+    today = date.today()
+    dates = [today - timedelta(days=i) for i in range(6, -1, -1)]  # n-6 ~ n
+
+    labels = [d.strftime('%Y-%m-%d') for d in dates]
+    data = []
+    cumulative_count = 0
+
+    all_histories = ActionHistory.objects.filter(
+        action=action,
+        created_at__date__lte=today
+    ).order_by('created_at__date')
+
+    for d in dates:
+        cumulative_count = all_histories.filter(created_at__date__lte=d).count()
+        data.append(cumulative_count)
+
+    labels_json = json.dumps(labels)
+    data_json = json.dumps(data)
+
     context = {
         'action': action,
+        'labels_json': labels_json,
+        'data_json': data_json,
     }
     return render(request, 'actions/action_detail.html', context)
 
