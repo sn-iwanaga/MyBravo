@@ -24,7 +24,6 @@
 
 
 ## 改善すべき点
-[DBの設計(improvement_db.md)](improvement_db.md)  
 [機能の追加(improvement_function.md)](improvement_function.md)
 
 ## 今後の展望
