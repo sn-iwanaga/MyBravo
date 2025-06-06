@@ -24,7 +24,7 @@
 
 
 ## 改善すべき点
-[機能の追加(improvement_function.md)](improvement_function.md)
+[改善点(improvement_points.md)](improvement_points.md)
 
 ## 今後の展望
 *   **なんとなくをやめる:** 曖昧な理解のまま進めてしまった箇所もあるため、そういったことがないようにします。
