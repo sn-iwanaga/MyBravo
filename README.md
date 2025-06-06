@@ -2,6 +2,10 @@
 
 日々のポジティブな行動を記録し、ポイントを貯めて設定したご褒美と交換できるアプリケーションを開発しました。日常の小さなことでも自身を褒める機会を作り、日々のモチベーション向上に繋げること、記録を通じて目標達成をサポートすることを目的としています。
 
+## 発表資料
+下のURLから確認できます  
+[発表資料](https://www.canva.com/design/DAGoJWn4Wgs/_Yb_zwMkmb84SH3ppOuELw/edit?utm_content=DAGoJWn4Wgs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 ## 利用方法
 下の導入ドキュメント(INTRODUCTION.md)を参考にしてください  
 [導入ドキュメント](INTRODUCTION.md)
