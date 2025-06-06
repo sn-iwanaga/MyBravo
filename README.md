@@ -24,7 +24,8 @@
 
 
 ## 改善すべき点
-[改善点(improvement_points.md)](improvement_points.md)
+下のドキュメント(improvement_points.md)をご確認ください
+[改善点](improvement_points.md)
 
 ## 今後の展望
 *   **なんとなくをやめる:** 曖昧な理解のまま進めてしまった箇所もあるため、そういったことがないようにします。
