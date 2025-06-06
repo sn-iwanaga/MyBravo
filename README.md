@@ -28,7 +28,7 @@
 
 
 ## 改善すべき点
-下のドキュメント(improvement_points.md)をご確認ください
+下のドキュメント(improvement_points.md)をご確認ください  
 [改善点](improvement_points.md)
 
 ## 今後の展望
